@@ -1,15 +1,16 @@
 package io.github.ratewio.phonebook;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PhoneBookTest {
-    static PhoneBook book;
+    PhoneBook book;
 
-    @BeforeAll
-    public static void initialBook() {
+    @BeforeEach
+    public void initialBook() {
         book = new PhoneBook();
     }
 
@@ -73,6 +74,11 @@ class PhoneBookTest {
                 "Max",
                 "Jonathan"
         };
+
+        //adding names first
+        for (int i = 0; i != numbers.length; ++i) {
+            book.add(names[i], numbers[i]);
+        }
 
         for (int i = 0; i != numbers.length; ++i) {
             assertEquals(names[i], book.findByNumber(numbers[i]));
