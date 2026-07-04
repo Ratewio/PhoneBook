@@ -120,8 +120,8 @@ class PhoneBookTest {
         String[] names = s.split("\n");
 
         assertEquals("Anatoly", names[0]);
-        assertEquals("Ostin", names[1]);
-        assertEquals("Georgy", names[2]);
+        assertEquals("Georgy", names[1]);
+        assertEquals("Ostin", names[2]);
     }
 
 }

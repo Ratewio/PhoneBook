@@ -32,7 +32,11 @@ public class PhoneBook {
     }
 
     public String printAllNames(){
-        return null;
+        StringBuilder sb = new StringBuilder();
+        phoneBook.values().stream().sorted().forEach(name -> sb.append(name).append('\n'));
+        String out = sb.toString();
+        System.out.printf(out);
+        return out;
     }
 
     public int size() {
