@@ -1,9 +1,25 @@
 package io.github.ratewio.phonebook;
 
-public class PhoneBook {
 
-    public int add(String name, long phoneNumber){
-        return 0;
+import it.unimi.dsi.fastutil.longs.Long2ObjectArrayMap;
+
+public class PhoneBook {
+    Long2ObjectArrayMap<String> phoneBook;
+
+    public PhoneBook() {
+        phoneBook = new Long2ObjectArrayMap<>();
     }
 
+    public int add(String name, long phoneNumber) {
+        if (!phoneBook.containsValue(name)) {
+            phoneBook.put(phoneNumber, name);
+        }
+        return size();
+    }
+
+
+
+    public int size() {
+        return phoneBook.size();
+    }
 }
