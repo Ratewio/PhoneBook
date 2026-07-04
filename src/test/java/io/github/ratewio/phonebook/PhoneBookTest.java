@@ -84,4 +84,27 @@ class PhoneBookTest {
             assertEquals(names[i], book.findByNumber(numbers[i]));
         }
     }
+
+    @Test
+    public void testFindByName() {
+        long[] numbers = new long[]{
+                12777666555L,
+                10002000300L,
+                19999999999L
+        };
+        String[] names = new String[]{
+                "Jef",
+                "Max",
+                "Jonathan"
+        };
+
+        //adding names first
+        for (int i = 0; i != numbers.length; ++i) {
+            book.add(names[i], numbers[i]);
+        }
+
+        for (int i = 0; i != numbers.length; ++i) {
+            assertEquals(numbers[i], book.findByName(names[i]));
+        }
+    }
 }
