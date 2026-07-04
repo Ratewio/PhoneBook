@@ -23,6 +23,11 @@ public class PhoneBook {
     }
 
     public long findByName(String name){
+        for (Long2ObjectMap.Entry<String> entry : phoneBook.long2ObjectEntrySet()) {
+            if (name.equals(entry.getValue())) {
+                return entry.getLongKey();
+            }
+        }
         return -1L;
     }
 
