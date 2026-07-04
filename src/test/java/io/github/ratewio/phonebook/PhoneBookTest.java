@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PhoneBookTest {
@@ -107,4 +109,19 @@ class PhoneBookTest {
             assertEquals(numbers[i], book.findByName(names[i]));
         }
     }
+
+    @Test
+    public void testPrintNames() {
+        book.add("Georgy", 12131233242L);
+        book.add("Ostin", 12313132134L);
+        book.add("Anatoly", 7878787872L);
+
+        String s = book.printAllNames();
+        String[] names = s.split("\n");
+
+        assertEquals("Anatoly", names[0]);
+        assertEquals("Ostin", names[1]);
+        assertEquals("Georgy", names[2]);
+    }
+
 }

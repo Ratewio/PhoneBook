@@ -31,6 +31,9 @@ public class PhoneBook {
         return -1L;
     }
 
+    public String printAllNames(){
+        return null;
+    }
 
     public int size() {
         return phoneBook.size();
