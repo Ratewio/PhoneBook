@@ -1,21 +1,17 @@
 package io.github.ratewio.phonebook;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PhoneBookTest {
-    PhoneBook book;
+    PhoneBook phoneBook;
 
     @BeforeEach
     public void initialBook() {
-        book = new PhoneBook();
+        phoneBook = new PhoneBook();
     }
-
 
     @Test
     public void testAddDifferent() {
@@ -31,8 +27,8 @@ class PhoneBookTest {
         };
 
         for (int i = 0; i != numbers.length; ++i) {
-            int expectedSize = book.size() + 1;
-            int afterAddSize = book.add(names[i], numbers[i]);
+            int expectedSize = phoneBook.size() + 1;
+            int afterAddSize = phoneBook.add(names[i], numbers[i]);
             assertEquals(expectedSize, afterAddSize);
         }
 
@@ -53,13 +49,13 @@ class PhoneBookTest {
 
         //adding names first
         for (int i = 0; i != numbers.length; ++i) {
-            book.add(names[i], numbers[i]);
+            phoneBook.add(names[i], numbers[i]);
         }
 
         //test second time adding
         for (int i = 0; i != numbers.length; ++i) {
-            int expectedSize = book.size(); //must be no changes
-            int afterAddSize = book.add(names[i], numbers[i]);
+            int expectedSize = phoneBook.size(); //must be no changes
+            int afterAddSize = phoneBook.add(names[i], numbers[i]);
             assertEquals(expectedSize, afterAddSize);
         }
     }
@@ -79,11 +75,11 @@ class PhoneBookTest {
 
         //adding names first
         for (int i = 0; i != numbers.length; ++i) {
-            book.add(names[i], numbers[i]);
+            phoneBook.add(names[i], numbers[i]);
         }
 
         for (int i = 0; i != numbers.length; ++i) {
-            assertEquals(names[i], book.findByNumber(numbers[i]));
+            assertEquals(names[i], phoneBook.findByNumber(numbers[i]));
         }
     }
 
@@ -102,21 +98,21 @@ class PhoneBookTest {
 
         //adding names first
         for (int i = 0; i != numbers.length; ++i) {
-            book.add(names[i], numbers[i]);
+            phoneBook.add(names[i], numbers[i]);
         }
 
         for (int i = 0; i != numbers.length; ++i) {
-            assertEquals(numbers[i], book.findByName(names[i]));
+            assertEquals(numbers[i], phoneBook.findByName(names[i]));
         }
     }
 
     @Test
     public void testPrintNames() {
-        book.add("Georgy", 12131233242L);
-        book.add("Ostin", 12313132134L);
-        book.add("Anatoly", 7878787872L);
+        phoneBook.add("Georgy", 12131233242L);
+        phoneBook.add("Ostin", 12313132134L);
+        phoneBook.add("Anatoly", 7878787872L);
 
-        String s = book.printAllNames();
+        String s = phoneBook.printAllNames();
         String[] names = s.split("\n");
 
         assertEquals("Anatoly", names[0]);
